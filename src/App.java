@@ -47,7 +47,7 @@ public class App {
         return list.stream()
                 .filter(p -> p.getType() == type)
                 .filter(Product::isDiscount)
-                .peek(p -> p.setPrice(p.getPrice() * (100 - discount) / 100))
+                .map(p -> new Product(type,p.getPrice()*(100-discount)/100,true))
                 .collect(Collectors.toList());
     }
 
